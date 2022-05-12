@@ -63,7 +63,6 @@ function App() {
   function onSubmit(country) {
     const searched_Country = fixed_countries.filter(c => c.name.common.match(new RegExp('^' + country, 'i')))
     if (searched_Country.length !== 0) {
-      console.log(searched_Country)
       setCountries(searched_Country)
       setSearchCountry({
         name: country,
@@ -85,7 +84,7 @@ function App() {
         const countriesWithId = res.map(country => {
           return { ...country, id: 'country-' + nanoid() }
         });
-        console.log(countriesWithId)
+        // console.log(countriesWithId)
         setCountries(countriesWithId);
         setFixedCountries(countriesWithId)
         setLoading(false)
@@ -108,7 +107,7 @@ function App() {
           </div>
         </header>
         <main className='justify-self-stretch pt-28'>
-          {!isLoading && (<div className='w-11/12 max-w-md mx-auto pt-9 pb-12 flex flex-col justify-between items-stretch gap-7 h-full lg:flex-row '>
+          {!isLoading && (<div className='w-11/12 mx-auto pt-9 pb-12 flex flex-col justify-between items-stretch gap-7 h-full lg:flex-row '>
             <SearchBox onSubmit={onSubmit} clearSearch={clearSearch} setClearSearch={updateClearSearch} />
             <Filter onFilter={filterCountries} currentFilter={filter} />
           </div>)}
