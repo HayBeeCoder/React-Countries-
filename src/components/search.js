@@ -12,7 +12,7 @@ function SearchBox({onSubmit,clearSearch,setClearSearch}){
     return (
         <form className='dark:bg-blue-750 bg-white shadow-md rounded-sm overflow-hidden w-full md:px-4 flex items-center justify-center' onSubmit={(e) => e.preventDefault()}>
             {/* set line height to normal to let text inside a label/p tag align vertically */}
-        <label htmlFor="new-search" className="h-auto mx-5 text-center inline-block leading-normal">
+        <label htmlFor="new-search" className="h-auto ml-5 mr-2 text-center inline-block leading-normal">
         <FontAwesomeIcon icon={['fas', 'search']} size='xs' />  
       </label>
       <input
