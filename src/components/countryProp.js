@@ -1,5 +1,6 @@
 
 function CountryProperty({prop,value}){
+    console.log(value)
     return (
         <li className="text-tiny my-2 list-none">
             <span className="font-semibold">{prop+': '}</span>

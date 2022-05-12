@@ -1,8 +1,10 @@
 // import conf from '../conf.jpg';
 
 function Country(props){
+    // console.log(props)
 
     function handleCountryClick(e){
+        console.log(props.id)
         props.onClick(props.id)
     }
     function formatNumber(number){
@@ -16,12 +18,12 @@ function Country(props){
         return  number + newNumber;
     }
     return (
-        <div className=" bg-white dark:bg-blue-750 shadow-md rounded-md overflow-hidden cursor-pointer" onClick={handleCountryClick}>
+        <div className=" bg-white dark:bg-blue-750 shadow-md rounded-md overflow-hidden cursor-pointer" onClick={() => handleCountryClick()}>
             <div className='relative h-40 w-full'>
-                <img src={props.flag} alt={props.name + "'s flag"} className="inline-block absolute h-full w-full top-0 left-0 object-cover"/>
+                <img src={props.flag} alt={props.name.common + "'s flag"} className="inline-block absolute h-full w-full top-0 left-0 object-cover"/>
             </div>
             <article className="p-5">
-                <h2 className="text-xl font-extrabold">{props.name}</h2>
+                <h2 className="text-xl font-extrabold">{props.name.common}</h2>
                 <ul>
                     <li className="text-tiny my-1">
                         <span className="font-semibold">Population: </span>

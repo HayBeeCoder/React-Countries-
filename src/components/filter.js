@@ -63,11 +63,7 @@ function Filter(props){
                         Oceania
                     </button>
                 </li>
-                <li>
-                    <button className="py-2 px-5 w-full text-left  text-tiny font-semibold" onClick={handleFilterClick}>
-                        Polar
-                    </button>
-                </li>
+              
             
             </ul>
         </div>

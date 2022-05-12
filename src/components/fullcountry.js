@@ -4,6 +4,7 @@ import CountryProperty from '../components/countryProp'
 import BorderCountry from "../components/borderCountry"
 
 function FullCountry({country,onButtonClick,countries,onBorderClick}){
+    console.log(country.borders)
      function handleButtonClick(){
         onButtonClick()
     }
@@ -20,8 +21,10 @@ function FullCountry({country,onButtonClick,countries,onBorderClick}){
    function fullBordersInfo(border){
       let fullBorder;
           for(let country of countries){
-                 if(country["alpha3Code"] === border){
-                 fullBorder =   <BorderCountry info={country} onBorderClick={onBorderClick} id={country.id} name={country.name}/>
+              if(country.cioc === border){
+                     console.log(border)
+                     console.log(country.name.common)
+                 fullBorder =   <BorderCountry onBorderClick={onBorderClick} id={country.id} name={country.name.common}/>
                 break;
                  }
           }
@@ -39,25 +42,25 @@ function FullCountry({country,onButtonClick,countries,onBorderClick}){
             </button>
             <div className="pt-9 flex flex-col gap-10 lg:flex-row">
                 <div className="w-full max-w-md h-56 relative  lg:w-3/5">
-                    <img src={country.flag} alt={country.name +"'s flag"} className="absolute w-full h-full top-0 left-0 object-cover shadow-md"/>
+                    <img src={country.flags.png} alt={country.name.common +"'s flag"} className="absolute w-full h-full top-0 left-0 object-cover shadow-md"/>
                 </div>
                 <div>
-                    <h1 className="text-lg font-extrabold mt-0 mb-3">{country.name}</h1>
+                    <h1 className="text-lg font-extrabold mt-0 mb-3">{country.name.common}</h1>
                     <ul className="flex flex-col gap-6 md:flex-row">
                         <div>
-                            <CountryProperty prop="Native Name" value={country.nativeName || 'nil;('}/>
+                            <CountryProperty prop="Native Name" value={country.name.official || 'nil;('}/>
                             <CountryProperty prop="Population" value={formatNumber(country.population) || 'nil;('}/>
                             <CountryProperty prop="Region" value={country.region || 'nil;('}/>
                             <CountryProperty prop="Sub Region" value={country.subregion || 'nil;('}/>
                             <CountryProperty prop="Capital" value={country.capital || 'nil;('}/>
                         </div>
                         <div>
-                            <CountryProperty prop="Top Level Domain" value={country.topLevelDomain.join(',')}/>
-                            <CountryProperty prop="Currencies" value={country.currencies.map(c => c.name).join(',')}/>
-                            <CountryProperty prop="Languages" value={country.languages.map(c => c.name).join(',')}/>
+                            {/* <CountryProperty prop="Top Level Domain" value={country.topLevelDomain.join(',')}/> */}
+                            <CountryProperty prop="Currencies" value={ Object.keys(country.currencies).join(',')}/>
+                            <CountryProperty prop="Languages" value={ Object.values(country.languages).join(',')}/>
                         </div>
                     </ul>
-                     <CountryProperty prop="BorderCountries" value={country.borders.length ? country.borders.map(fullBordersInfo): 'NO COUNTRIES FOUND;('}  onBorderClick={onBorderClick}/> 
+                     <CountryProperty prop="BorderCountries" value={country.borders && country.borders.length ?   country.borders.map(fullBordersInfo): 'NO COUNTRIES FOUND;('}  onBorderClick={onBorderClick}/> 
                 </div>
             </div>
             </div>
