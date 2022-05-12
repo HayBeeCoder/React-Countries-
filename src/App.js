@@ -19,7 +19,7 @@ const FILTER_MAP =  {
 }
 
 function App() {
-  const baseURL = 'https://restcountries.eu/rest/v2/';
+  const baseURL = 'https://restcountries.eu/rest/v3.1/';
   
   const [clearSearch,setClearSearch] = useState(false)
   const [countryOpen,setCountryOpen] = useState(false)
